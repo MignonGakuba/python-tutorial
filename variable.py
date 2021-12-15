@@ -27,6 +27,16 @@ def check_the_methode_of_sorted():
     print(result)
 
 
+# default by this methode it is not use (str())
+def print_something(name, age):
+    #print("My name is", name, "and my age is", age)
+    print("My name is", name, "and my age is", age)
+
+
+def print_something_2(name="Mignon", age="Unkown"):
+    print("My name is", name, "and my age is", age)
+
+
 if __name__ == '__main__':
     greeting = "Hello World"
     word = greeting.split(" ")[0]
@@ -40,3 +50,10 @@ if __name__ == '__main__':
 
     # Check and sort the array
     check_the_methode_of_sorted()
+
+    # Check the default methode
+    print_something("Mignon", 24)
+
+    # Check the default methode but can be overwritten i
+    print_something_2()
+    print_something_2("Nick", 33)
