@@ -29,7 +29,7 @@ def check_the_methode_of_sorted():
 
 # default by this methode it is not use (str())
 def print_something(name, age):
-    #print("My name is", name, "and my age is", age)
+    # print("My name is", name, "and my age is", age)
     print("My name is", name, "and my age is", age)
 
 
@@ -43,10 +43,10 @@ if __name__ == '__main__':
     print("Hello" == word)
 
     # Check the length of the input
-    # check_the_methode_of_len()
+    check_the_methode_of_len()
 
-    # Check if the input convert to string
-    # check_the_methode_of_str()
+    # Check if the input convert to a string variable
+    check_the_methode_of_str()
 
     # Check and sort the array
     check_the_methode_of_sorted()
@@ -56,4 +56,8 @@ if __name__ == '__main__':
 
     # Check the default methode but can be overwritten i
     print_something_2()
+
+    # Check the default methode but can be overwritten i
     print_something_2("Nick", 33)
+    # Check the default methode but can be overwritten i
+    print_something_2(name="Test", age=33)
