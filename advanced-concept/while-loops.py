@@ -1,6 +1,11 @@
+from classes.enemy import Enemy
+
 import random
 
 # create variables for to test the while function
+
+
+enemy = Enemy(300, 30, 60, 50)
 
 playerhp = 260
 enemyatkl = 60
@@ -13,7 +18,7 @@ while playerhp > 0:
     if playerhp <= 30:
         playerhp = 30
 
-    print("Enemy strikes for", dmg, "points of damage", "Current HP is",playerhp)
+    print("Enemy strikes for", dmg, "points of damage", "Current HP is", playerhp)
 
     if playerhp > 30:
         continue
