@@ -3,11 +3,13 @@ import random
 
 class Enemy:
 
-    #Create a constructor with the variables atkl atkh
-    def __init__(self):
+    #Create variable in the class Enemy
 
-    atkl = 60
-    atkh = 80
+    hp = 200
+    # Create a constructor with the variables atkl atkh
+    def __init__(self, atkl, atkh):
+        self.atkl = atkl
+        self.atkh = atkh
 
     def getAtkl(self):
         print(self.atkl)
@@ -17,13 +19,16 @@ class Enemy:
         print(self.atkh)
         # return self.atkh
 
-
-enemy1 = Enemy()
-dmg = enemy1.getAtkh()
-print(dmg)
+    def getHp(self):
+        print("HP is ", self.hp)
 
 
+enemy1 = Enemy(40,50)
+enemy1.getAtkh()
+enemy1.getHp()
 
+enemy2 = Enemy(20,30)
+enemy1.getAtkl()
 
 ...
 playerhp = 260
@@ -37,7 +42,7 @@ while playerhp > 0:
     if playerhp <= 30:
         playerhp = 30
 
-    print("Enemy strikes for", dmg, "points of damage", "Current HP is",playerhp)
+    print("Enemy strikes for", dmg, "points of damage", "Current HP is", playerhp)
 
     if playerhp > 30:
         continue
