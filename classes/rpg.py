@@ -33,8 +33,27 @@ class Person:
         magich = self.magic[i]["dmg"] + 5
         return random.randrange(magicl, magich)
 
-    def take_damage(self,dmg):
-        self.hp -=dmg
+    def take_damage(self, dmg):
+        self.hp -= dmg
         if self.hp < 0:
-           self.hp = 0
-        return self.hp 
+            self.hp = 0
+        return self.hp
+
+    def get_hp(self):
+        return self.hp
+
+    def get_mp(self):
+        return self.mp
+
+    def get_max_hp(self):
+        return self.maxhp
+
+    def reduce_mp(self, cost):
+        self.mp -= cost
+
+    def get_spell_mp_cost(self, i):
+        # self.mp -=self.magic[i]["cost"]
+        return self.magic[i]["cost"]
+
+    def get_spell_name(self, i):
+        return self.magic[i]["name"]
