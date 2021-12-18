@@ -1,3 +1,11 @@
+
+
+'''
+    Pogram: Tutorial folass
+    Author: Mignon G
+    Copyright: 2021
+
+'''
 import random
 
 
