@@ -1,25 +1,14 @@
-# This is a sample Python script.
+from classes.enemy import Enemy
+from classes.rpg import Person
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+magic = [{"name": "Fire", "cost": 10, "dmg": 60},
+         {"name": "Tunder", "cost": 10, "dmg": 80},
+         {"name": "Blizzard", "cost": 10, "dmg": 100}]
 
 
-def test_hello(word):
-    print(f'Hello World,{word}')
+# magic_tunder_name = magic[1]["name"]
+# print(magic_tunder_name)
+
+player = Person(460, 65, 60, magic, 34)
 
 
-def test_message(message):
-    print(f'The message of the,{message}')
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-    test_hello('PC')
-    test_message("dfsdf")
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
