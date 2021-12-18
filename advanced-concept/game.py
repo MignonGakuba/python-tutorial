@@ -2,6 +2,10 @@ import random
 
 
 class Enemy:
+
+    #Create a constructor with the variables atkl atkh
+    def __init__(self):
+
     atkl = 60
     atkh = 80
 
@@ -17,6 +21,9 @@ class Enemy:
 enemy1 = Enemy()
 dmg = enemy1.getAtkh()
 print(dmg)
+
+
+
 
 ...
 playerhp = 260
