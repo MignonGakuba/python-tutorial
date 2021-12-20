@@ -14,7 +14,7 @@ class bcolors:
 
 class Person:
 
-    # Contructor using the mmethode def ___init__
+    # Constructor using the methode def ___init__
     def __init__(self, hp, atk, df, magic, mp):
         self.max_hp = hp
         self.hp = hp
