@@ -57,3 +57,4 @@ class Person:
 
     def get_spell_name(self, i):
         return self.magic[i]["name"]
+
