@@ -14,8 +14,9 @@ class bcolors:
 
 class Person:
 
+    # Contructor using the mmethode def ___init__
     def __init__(self, hp, atk, df, magic, mp):
-        self.maxhp = hp
+        self.max_hp = hp
         self.hp = hp
         self.mp = mp
         self.atk = atk
@@ -58,3 +59,8 @@ class Person:
     def get_spell_name(self, i):
         return self.magic[i]["name"]
 
+    def get_help(self):
+        return self.hp
+
+    def get_max_hp(self):
+        return self.max_hp
