@@ -2,14 +2,6 @@ from classes.rpg import Person, bcolors
 from classes.magic import Spell
 from classes.inventory import Item
 
-print("\n\n")
-print("Name                      HP                                    MP")
-print("                          _________________________             _______________ ")
-print( bcolors.BOLD + "Valos:            " + "460/460|" + bcolors.OKGREEN + "█████████████████ " + bcolors.ENDC + bcolors.BOLD + "       |     65/65 |" + bcolors.OKBLUE + "███████████████" + bcolors.ENDC + "|")
-print("                          _________________________             _______________ ")
-
-print("\n\n")
-
 # Create Black magic
 fire = Spell("Fire", 10, 100, "black")
 blizzard = Spell("Blizzard", 10, 100, "black")
@@ -37,8 +29,12 @@ payer_items = [{"item": potion, "quantity": 5}, {"item": high_potion, "quantity"
                {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
 # Objects: player, enemy are to instantiate of the class Person
-player = Person(460, 65, 60, 34, player_magic, payer_items)
-enemy = Person(1200, 65, 45, 25, [], [])
+player = Person("Valos:", 3260, 65, 60, 34, player_magic, payer_items)
+player2 = Person("Nick:", 4160, 65, 60, 34, player_magic, payer_items)
+player3 = Person("Robot:", 3089, 65, 60, 34, player_magic, payer_items)
+
+players = [player, player2, player3]
+enemy = Person("", 1200, 65, 45, 25, [], [])
 
 running = True
 i = 0
@@ -48,9 +44,18 @@ print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 while running:
 
     print("=======================")
-    player.choose_action()
-    choice = input("Choose action: ")
-    index = int(choice) - 1
+
+    print("\n\n")
+    print(" NAME                  HP                                  MP")
+    for player in players:
+        player.get_stats()
+
+    print("\n")
+
+    for player in players:
+        player.choose_action()
+        choice = input("Choose action: ")
+        index = int(choice) - 1
 
     print("You choice", index)
 
