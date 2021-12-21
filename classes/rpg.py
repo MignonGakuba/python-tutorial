@@ -1,4 +1,5 @@
 import random
+from .magic import Spell
 
 
 class bcolors:
@@ -11,28 +12,29 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
- 
-class Person:
 
+class Person:
     # Constructor using the methode def ___init__
-    def __init__(self, hp, atk, df, magic, mp):
+    def __init__(self, hp, atk, df, mp, magic, items):
         self.max_hp = hp
         self.hp = hp
+        self.max_mp = mp
         self.mp = mp
         self.atk = atk
         self.atkl = atk - 10
         self.atkh = atk + 10
         self.df = df
         self.magic = magic
-        self.actions = ["Attack", "Magic"]
+        self.items = items
+        self.actions = ["Attack", "Magic", "Items"]
 
     def generate_dmg(self):
         return random.randrange(self.atkl, self.atkh)
 
-    def generate_spell_dmg(self, i):
-        magicl = self.magic[i]["dmg"] - 5
-        magich = self.magic[i]["dmg"] + 5
-        return random.randrange(magicl, magich)
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp < 0:
+            self.hp = self.max_hp
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -49,15 +51,11 @@ class Person:
     def get_max_hp(self):
         return self.maxhp
 
+    def get_max_mp(self):
+        return self.max_mp
+
     def reduce_mp(self, cost):
         self.mp -= cost
-
-    def get_spell_mp_cost(self, i):
-        # self.mp -=self.magic[i]["cost"]
-        return self.magic[i]["cost"]
-
-    def get_spell_name(self, i):
-        return self.magic[i]["name"]
 
     def get_help(self):
         return self.hp
@@ -69,14 +67,19 @@ class Person:
         i = 1
         print("Actions")
         for item in self.actions:
-            print(str(i) + ":", item)
+            print("      "+str(i) + ":", item)
             i += 1
 
     def choose_magic(self):
         i = 1
-        print("Magic")
+        print("\n"+bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
         for spell in self.magic:
-            print(str(i) + ":", spell["name"], "(cost:", str(spell["mp"]) + ")")
+            print("      "+str(i) + ":", spell.name, "(cost:", str(spell.cost) + ") ")
             i += 1
 
-
+    def choose_item(self):
+        i = 1
+        print("\n"+bcolors.OKGREEN + bcolors.BOLD + "ITEMS" + bcolors.ENDC)
+        for item in self.items:
+            print("      "+str(i) + ":", item["item"].name, ":", item["item"].description + "(x"+str(item["quantity"]) +")")
+            i += 1
