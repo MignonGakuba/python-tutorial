@@ -5,8 +5,6 @@ magic = [{"name": "Fire", "cost": 10, "dmg": 100},
          {"name": "Tunder", "cost": 10, "dmg": 120},
          {"name": "Blizzard", "cost": 10, "dmg": 100}]
 
-magic_tunder_name = magic[1]["name"]
-print(magic_tunder_name)
 
 player = Person(460, 65, 60, 34, magic)
 enemy = Person(1200, 65, 45, 25, magic)
@@ -20,7 +18,7 @@ while running:
 
     print("=======================")
     player.choose_action()
-    choice = input("Choose action:")
+    choice = input("Choose action: ")
     index = int(choice) - 1
 
     print("You choice", index)
@@ -32,7 +30,7 @@ while running:
 
     elif index == 1:
         player.choose_magic()
-        choice_magic = int(input("Choose magic")) - 1
+        choice_magic = int(input("Choose magic: ")) - 1
         magic_dmg = player.generate_spell_dmg(choice_magic)
         spell = player.get_spell_name(choice_magic)
         cost = player.get_spell_mp_cost(choice_magic)
