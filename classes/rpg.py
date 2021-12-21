@@ -15,7 +15,8 @@ class bcolors:
 
 class Person:
     # Constructor using the methode def ___init__
-    def __init__(self, hp, atk, df, mp, magic, items):
+    def __init__(self, name, hp, atk, df, mp, magic, items):
+        self.name = name
         self.max_hp = hp
         self.hp = hp
         self.max_mp = mp
@@ -67,19 +68,24 @@ class Person:
         i = 1
         print("Actions")
         for item in self.actions:
-            print("      "+str(i) + ":", item)
+            print("      " + str(i) + ":", item)
             i += 1
 
     def choose_magic(self):
         i = 1
-        print("\n"+bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
+        print("\n" + bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
         for spell in self.magic:
-            print("      "+str(i) + ":", spell.name, "(cost:", str(spell.cost) + ") ")
+            print("      " + str(i) + ":", spell.name, "(cost:", str(spell.cost) + ") ")
             i += 1
 
     def choose_item(self):
         i = 1
-        print("\n"+bcolors.OKGREEN + bcolors.BOLD + "ITEMS" + bcolors.ENDC)
+        print("\n" + bcolors.OKGREEN + bcolors.BOLD + "ITEMS" + bcolors.ENDC)
         for item in self.items:
-            print("      "+str(i) + ":", item["item"].name, ":", item["item"].description + "(x"+str(item["quantity"]) +")")
+            print("      " + str(i) + ":", item["item"].name, ":",
+                  item["item"].description + "(x" + str(item["quantity"]) + ")")
             i += 1
+
+    def get_stats(self):
+        print("                             _________________________            _______________ ")
+        print(bcolors.BOLD + self.name + "             "+str(self.hp)+"/"+str(self.max_hp) + "|" + bcolors.OKGREEN + "█████████████████ " + bcolors.ENDC + bcolors.BOLD + "       |    " +str(self.mp) + "/" + str(self.max_mp)+ " |" + bcolors.OKBLUE + "███████████████" + bcolors.ENDC + "|")

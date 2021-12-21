@@ -23,16 +23,18 @@ hi_elixer = Item("High Elixer", "elixer", "Fully restores party's HP/MP", 9999)
 grenade = Item("Grenade", "attack", "Deals 500 damge", 500)
 
 # Create list of items and magic
-
 player_magic = [fire, thunder, blizzard, meteor, cure, cura]
 payer_items = [{"item": potion, "quantity": 5}, {"item": high_potion, "quantity": 5},
                {"item": super_potion, "quantity": 5}, {"item": elixer, "quantity": 5},
                {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
-print(payer_items)
 # Objects: player, enemy are to instantiate of the class Person
-player = Person(460, 65, 60, 34, player_magic, payer_items)
-enemy = Person(1200, 65, 45, 25, [], [])
+player = Person("Valos:", 3260, 65, 60, 34, player_magic, payer_items)
+player2 = Person("Nick:", 4160, 65, 60, 34, player_magic, payer_items)
+player3 = Person("Robot:", 3089, 65, 60, 34, player_magic, payer_items)
+
+players = [player, player2, player3]
+enemy = Person("", 1200, 65, 45, 25, [], [])
 
 running = True
 i = 0
@@ -42,9 +44,18 @@ print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 while running:
 
     print("=======================")
-    player.choose_action()
-    choice = input("Choose action: ")
-    index = int(choice) - 1
+
+    print("\n\n")
+    print(" NAME                  HP                                  MP")
+    for player in players:
+        player.get_stats()
+
+    print("\n")
+
+    for player in players:
+        player.choose_action()
+        choice = input("Choose action: ")
+        index = int(choice) - 1
 
     print("You choice", index)
 
@@ -103,7 +114,8 @@ while running:
 
         elif item["item"].type == "attack":
             enemy.take_damage(item.prop)
-            print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop, "points of damage" + bcolors.ENDC)
+            print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop,
+                  "points of damage" + bcolors.ENDC)
 
     enemy_choice = 1
 
