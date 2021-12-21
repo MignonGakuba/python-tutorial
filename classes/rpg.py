@@ -11,7 +11,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
+ 
 class Person:
 
     # Constructor using the methode def ___init__
@@ -64,3 +64,19 @@ class Person:
 
     def get_max_hp(self):
         return self.max_hp
+
+    def choose_action(self):
+        i = 1
+        print("Actions")
+        for item in self.actions:
+            print(str(i) + ":", item)
+            i += 1
+
+    def choose_magic(self):
+        i = 1
+        print("Magic")
+        for spell in self.magic:
+            print(str(i) + ":", spell["name"], "(cost:", str(spell["mp"]) + ")")
+            i += 1
+
+
