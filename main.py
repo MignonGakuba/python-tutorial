@@ -2,6 +2,14 @@ from classes.rpg import Person, bcolors
 from classes.magic import Spell
 from classes.inventory import Item
 
+print("\n\n")
+print("Name                      HP                                    MP")
+print("                          _________________________             _______________ ")
+print( bcolors.BOLD + "Valos:            " + "460/460|" + bcolors.OKGREEN + "█████████████████ " + bcolors.ENDC + bcolors.BOLD + "       |     65/65 |" + bcolors.OKBLUE + "███████████████" + bcolors.ENDC + "|")
+print("                          _________________________             _______________ ")
+
+print("\n\n")
+
 # Create Black magic
 fire = Spell("Fire", 10, 100, "black")
 blizzard = Spell("Blizzard", 10, 100, "black")
@@ -23,13 +31,11 @@ hi_elixer = Item("High Elixer", "elixer", "Fully restores party's HP/MP", 9999)
 grenade = Item("Grenade", "attack", "Deals 500 damge", 500)
 
 # Create list of items and magic
-
 player_magic = [fire, thunder, blizzard, meteor, cure, cura]
 payer_items = [{"item": potion, "quantity": 5}, {"item": high_potion, "quantity": 5},
                {"item": super_potion, "quantity": 5}, {"item": elixer, "quantity": 5},
                {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
-print(payer_items)
 # Objects: player, enemy are to instantiate of the class Person
 player = Person(460, 65, 60, 34, player_magic, payer_items)
 enemy = Person(1200, 65, 45, 25, [], [])
@@ -103,7 +109,8 @@ while running:
 
         elif item["item"].type == "attack":
             enemy.take_damage(item.prop)
-            print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop, "points of damage" + bcolors.ENDC)
+            print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop,
+                  "points of damage" + bcolors.ENDC)
 
     enemy_choice = 1
 
