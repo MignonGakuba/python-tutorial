@@ -11,13 +11,13 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
- 
-class Person:
 
+class Person:
     # Constructor using the methode def ___init__
-    def __init__(self, hp, atk, df, magic, mp):
+    def __init__(self, hp, atk, df, mp, magic):
         self.max_hp = hp
         self.hp = hp
+        self.max_mp = mp
         self.mp = mp
         self.atk = atk
         self.atkl = atk - 10
@@ -34,6 +34,11 @@ class Person:
         magich = self.magic[i]["dmg"] + 5
         return random.randrange(magicl, magich)
 
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp < 0:
+           self.hp = self.max_hp
+
     def take_damage(self, dmg):
         self.hp -= dmg
         if self.hp < 0:
@@ -48,6 +53,9 @@ class Person:
 
     def get_max_hp(self):
         return self.maxhp
+
+    def get_max_mp(self):
+        return self.max_mp
 
     def reduce_mp(self, cost):
         self.mp -= cost
