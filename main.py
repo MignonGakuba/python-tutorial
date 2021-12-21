@@ -1,6 +1,7 @@
-from classes.enemy import Enemy
 from classes.rpg import Person, bcolors
 from classes.magic import Spell
+from classes.inventory import Item
+
 
 # Create Black magic
 fire = Spell("Fire", 10, 100, "black")
@@ -13,7 +14,14 @@ meteor = Spell("Meteor", 20, 200, "black")
 cure = Spell("Cure", 12, 120, "white")
 cura = Spell("Cura", 18, 200, "white")
 
-# Objects: player, enemy are the instaniatie of the class Person
+# Create Item
+potion = Item("Potion","potion","Heals 50 HP",50)
+high_potion = Item("Hi-Potion","potion","Heals 100 HP",100)
+super_potion = Item("Super Potion","potion","Heals 250 HP",150)
+
+
+
+# Objects: player, enemy are the instantiate of the class Person
 player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, cure, cura])
 enemy = Person(1200, 65, 45, 25, [])
 
@@ -48,10 +56,14 @@ while running:
         if spell.cost > current_mp:
             print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
             continue
-
         player.reduce_mp(spell.cost)
-        enemy.take_damage(magic_dmg)
-        print(bcolors.OKBLUE + "\n" + spell.name + "deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
+
+        if spell.type == "white":
+            player.heal(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + "heals for ", str(magic_dmg), "HP" + bcolors.ENDC)
+        elif spell.type == "black":
+            enemy.take_damage(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + "deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
 
     enemy_choice = 1
 
