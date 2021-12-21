@@ -1,10 +1,19 @@
 from classes.enemy import Enemy
 from classes.rpg import Person, bcolors
+from classes.magic import Spell
 
 magic = [{"name": "Fire", "cost": 10, "dmg": 100},
          {"name": "Tunder", "cost": 10, "dmg": 120},
          {"name": "Blizzard", "cost": 10, "dmg": 100}]
 
+
+#Create Black magic
+
+fire = Spell("Fire", 10, 100, "black")
+blizzard = Spell("Blizzard", 10,100,"black")
+thunder = Spell("Thunder", 10, 120,"black")
+quake = Spell("Quake", 10, 130,"black")
+meteor = Spell("Meteor", 10,130,"black")
 
 player = Person(460, 65, 60, 34, magic)
 enemy = Person(1200, 65, 45, 25, magic)

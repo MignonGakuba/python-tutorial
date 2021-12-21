@@ -29,11 +29,6 @@ class Person:
     def generate_dmg(self):
         return random.randrange(self.atkl, self.atkh)
 
-    def generate_spell_dmg(self, i):
-        magicl = self.magic[i]["dmg"] - 5
-        magich = self.magic[i]["dmg"] + 5
-        return random.randrange(magicl, magich)
-
     def heal(self, dmg):
         self.hp += dmg
         if self.hp < 0:
@@ -59,13 +54,6 @@ class Person:
 
     def reduce_mp(self, cost):
         self.mp -= cost
-
-    def get_spell_mp_cost(self, i):
-        # self.mp -=self.magic[i]["cost"]
-        return self.magic[i]["cost"]
-
-    def get_spell_name(self, i):
-        return self.magic[i]["name"]
 
     def get_help(self):
         return self.hp
