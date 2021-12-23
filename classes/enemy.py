@@ -1,11 +1,10 @@
 
-
 ''''
     Create class to import in the main
 '''
 class Enemy:
 
-    def __init__(self, hp ,atkl, atkh,mp):
+    def __init__(self, hp ,atkl, atkh, mp):
         self.hp = hp
         self.atkl = atkl
         self.atkh = atkh
@@ -13,7 +12,6 @@ class Enemy:
 
     def get_hp(self):
         return self.hp
-
 
     def get_mp(self):
         return self.mp
