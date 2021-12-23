@@ -29,12 +29,12 @@ payer_items = [{"item": potion, "quantity": 5}, {"item": high_potion, "quantity"
                {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 
 # Objects: player, enemy are to instantiate of the class Person
-player = Person("Valos:", 3260, 65, 60, 34, player_magic, payer_items)
-player2 = Person("Nick:", 4160, 65, 60, 34, player_magic, payer_items)
-player3 = Person("Robot:", 3089, 65, 60, 34, player_magic, payer_items)
+player = Person("Valos:", 3260, 132, 60, 34, player_magic, payer_items)
+player2 = Person("Nick:", 4160, 188, 60, 34, player_magic, payer_items)
+player3 = Person("Robot:", 3089, 174, 60, 34, player_magic, payer_items)
 
 players = [player, player2, player3]
-enemy = Person("", 1200, 221, 45, 25, [], [])
+enemy = Person("", 1200, 701, 45, 25, [], [])
 
 running = True
 i = 0
