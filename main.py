@@ -34,7 +34,7 @@ player2 = Person("Nick:", 4160, 65, 60, 34, player_magic, payer_items)
 player3 = Person("Robot:", 3089, 65, 60, 34, player_magic, payer_items)
 
 players = [player, player2, player3]
-enemy = Person("", 1200, 65, 45, 25, [], [])
+enemy = Person("", 1200, 221, 45, 25, [], [])
 
 running = True
 i = 0
@@ -56,8 +56,6 @@ while running:
         player.choose_action()
         choice = input("Choose action: ")
         index = int(choice) - 1
-
-        print("You choice", index)
 
         if index == 0:
             dmg = player.generate_dmg()
@@ -105,7 +103,8 @@ while running:
 
             if item["item"].type == "potion":
                 player.heal(item.prop)
-                print(bcolors.OKGREEN + "\n" + item["item"].name + "heals for", str(item["item"].prop), "HP" + bcolors.ENDC)
+                print(bcolors.OKGREEN + "\n" + item["item"].name + "heals for", str(item["item"].prop),
+                      "HP" + bcolors.ENDC)
 
             elif item["item"].type == "elixer":
                 player.hp = player.max_hp
