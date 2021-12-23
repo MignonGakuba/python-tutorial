@@ -3,11 +3,11 @@ from classes.magic import Spell
 from classes.inventory import Item
 
 # Create Black magic
-fire = Spell("Fire", 10, 100, "black")
-blizzard = Spell("Blizzard", 10, 100, "black")
-thunder = Spell("Thunder", 10, 100, "black")
+fire = Spell("Fire", 25, 600, "black")
+blizzard = Spell("Blizzard", 25, 600, "black")
+thunder = Spell("Thunder", 25, 600, "black")
 quake = Spell("Quake", 14, 140, "black")
-meteor = Spell("Meteor", 20, 200, "black")
+meteor = Spell("Meteor", 20, 1200, "black")
 
 # Create White magic
 cure = Spell("Cure", 12, 120, "white")
@@ -16,7 +16,7 @@ cura = Spell("Cura", 18, 200, "white")
 # Create  some items
 potion = Item("Potion", "potion", "Heals 50 HP", 50)
 high_potion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
-super_potion = Item("Super Potion", "potion", "Heals 500 HP", 500)
+super_potion = Item("Super Potion", "potion", "Heals 1000 HP", 1000)
 elixer = Item("Elixer", "elixer", "Fully restores HP?MP of one party member", 9999)
 hi_elixer = Item("High Elixer", "elixer", "Fully restores party's HP/MP", 9999)
 
@@ -34,7 +34,7 @@ player2 = Person("Nick:", 4160, 188, 60, 34, player_magic, payer_items)
 player3 = Person("Robot:", 3089, 174, 60, 34, player_magic, payer_items)
 
 players = [player, player2, player3]
-enemy = Person("", 1200, 701, 45, 25, [], [])
+enemy = Person("", 11200, 701, 45, 25, [], [])
 
 running = True
 i = 0
@@ -112,8 +112,8 @@ while running:
                 print(bcolors.OKGREEN + "\n" + item["item"].name + "fully restores HP/MP " + bcolors.ENDC)
 
             elif item["item"].type == "attack":
-                enemy.take_damage(item.prop)
-                print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop,
+                enemy.take_damage(item["item"].prop)
+                print(bcolors.FAIL + " " + "\n" + item["item"].name + "deals ", item["item"].prop,
                       "points of damage" + bcolors.ENDC)
 
         enemy_choice = 1
