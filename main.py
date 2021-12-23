@@ -57,81 +57,81 @@ while running:
         choice = input("Choose action: ")
         index = int(choice) - 1
 
-    print("You choice", index)
+        print("You choice", index)
 
-    if index == 0:
-        dmg = player.generate_dmg()
-        enemy.take_damage(dmg)
-        print("You attack for ", dmg, "points of damage.   Enemy HP:", enemy.get_hp())
+        if index == 0:
+            dmg = player.generate_dmg()
+            enemy.take_damage(dmg)
+            print("You attack for ", dmg, "points of damage.   Enemy HP:", enemy.get_hp())
 
-    elif index == 1:
-        player.choose_magic()
-        choice_magic = int(input("Choose magic: ")) - 1
+        elif index == 1:
+            player.choose_magic()
+            choice_magic = int(input("Choose magic: ")) - 1
 
-        if choice_magic == -1:
-            continue
+            if choice_magic == -1:
+                continue
 
-        spell = player.magic[choice_magic]
-        magic_dmg = spell.generate_dmg()
+            spell = player.magic[choice_magic]
+            magic_dmg = spell.generate_dmg()
 
-        current_mp = player.get_mp()
+            current_mp = player.get_mp()
 
-        if spell.cost > current_mp:
-            print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
-            continue
+            if spell.cost > current_mp:
+                print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
+                continue
 
-        player.reduce_mp(spell.cost)
+            player.reduce_mp(spell.cost)
 
-        if spell.type == "white":
-            player.heal(magic_dmg)
-            print(bcolors.OKBLUE + "\n" + spell.name + " heals for ", str(magic_dmg), "HP" + bcolors.ENDC)
-        elif spell.type == "black":
-            enemy.take_damage(magic_dmg)
-            print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
+            if spell.type == "white":
+                player.heal(magic_dmg)
+                print(bcolors.OKBLUE + "\n" + spell.name + " heals for ", str(magic_dmg), "HP" + bcolors.ENDC)
+            elif spell.type == "black":
+                enemy.take_damage(magic_dmg)
+                print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
 
-    elif index == 2:
-        player.choose_item()
-        item_choice = int(input("Choose items: ")) - 1
+        elif index == 2:
+            player.choose_item()
+            item_choice = int(input("Choose items: ")) - 1
 
-        if item_choice == -1:
-            continue
+            if item_choice == -1:
+                continue
 
-        item = player.items[item_choice]
-        player.items[item_choice]["quantity"] -= 1
+            item = player.items[item_choice]
+            player.items[item_choice]["quantity"] -= 1
 
-        if player.items[item_choice]["quantity"] == 0:
-            print(bcolors.FAIL + "\n" + "None left..." + bcolors.ENDC)
-            continue
+            if player.items[item_choice]["quantity"] == 0:
+                print(bcolors.FAIL + "\n" + "None left..." + bcolors.ENDC)
+                continue
 
-        if item["item"].type == "potion":
-            player.heal(item.prop)
-            print(bcolors.OKGREEN + "\n" + item["item"].name + "heals for", str(item["item"].prop), "HP" + bcolors.ENDC)
+            if item["item"].type == "potion":
+                player.heal(item.prop)
+                print(bcolors.OKGREEN + "\n" + item["item"].name + "heals for", str(item["item"].prop), "HP" + bcolors.ENDC)
 
-        elif item["item"].type == "elixer":
-            player.hp = player.max_hp
-            player.mp = player.max_mp
-            print(bcolors.OKGREEN + "\n" + item["item"].name + "fully restores HP/MP " + bcolors.ENDC)
+            elif item["item"].type == "elixer":
+                player.hp = player.max_hp
+                player.mp = player.max_mp
+                print(bcolors.OKGREEN + "\n" + item["item"].name + "fully restores HP/MP " + bcolors.ENDC)
 
-        elif item["item"].type == "attack":
-            enemy.take_damage(item.prop)
-            print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop,
-                  "points of damage" + bcolors.ENDC)
+            elif item["item"].type == "attack":
+                enemy.take_damage(item.prop)
+                print(bcolors.FAIL + "\n" + item["item"].name + "deals ", item["item"].prop,
+                      "points of damage" + bcolors.ENDC)
 
-    enemy_choice = 1
+        enemy_choice = 1
 
-    enemy_dmg = enemy.generate_dmg()
-    player.take_damage(enemy_dmg)
-    print("Enemy attacks for", enemy_dmg, "points of damage.")
+        enemy_dmg = enemy.generate_dmg()
+        player.take_damage(enemy_dmg)
+        print("Enemy attacks for", enemy_dmg, "points of damage.")
 
-    print("________________________________")
-    print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + bcolors.ENDC)
+        print("________________________________")
+        print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + bcolors.ENDC)
 
-    print("Your HP:", bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_max_hp()) + bcolors.ENDC)
-    print("Your MP:", bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_max_mp()) + bcolors.ENDC)
+        print("Your HP:", bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_max_hp()) + bcolors.ENDC)
+        print("Your MP:", bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_max_mp()) + bcolors.ENDC)
 
-    if enemy.get_hp() == 0:
-        print(bcolors.OKGREEN + "YOU WIN" + bcolors.ENDC)
-        running = False
-    elif player.get_hp() == 0:
-        print(bcolors.FAIL + "You enemy has defeated you!" + bcolors.ENDC)
-        running = False
+        if enemy.get_hp() == 0:
+            print(bcolors.OKGREEN + "YOU WIN" + bcolors.ENDC)
+            running = False
+        elif player.get_hp() == 0:
+            print(bcolors.FAIL + "You enemy has defeated you!" + bcolors.ENDC)
+            running = False
