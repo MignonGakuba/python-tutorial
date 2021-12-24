@@ -14,7 +14,7 @@ meteor = Spell("Meteor", 20, 1200, "black")
 # Create White magic
 cure = Spell("Cure", 12, 120, "white")
 cura = Spell("Cura", 18, 200, "white")
-
+curaga = Spell("Curaga", 50, 6000, "white")
 # Create  some items
 potion = Item("Potion", "potion", "Heals 50 HP", 50)
 high_potion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
@@ -27,17 +27,19 @@ grenade = Item("Grenade", "attack", "Deals 500 damge", 500)
 # Create list of items and magic
 player_magic = [fire, thunder, blizzard, meteor, cure, cura]
 player_items = [{"item": potion, "quantity": 5}, {"item": high_potion, "quantity": 5},
-               {"item": super_potion, "quantity": 5}, {"item": elixer, "quantity": 5},
-               {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
+                {"item": super_potion, "quantity": 5}, {"item": elixer, "quantity": 5},
+                {"item": hi_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
+
+enemy_spells = [fire, meteor, curaga]
 
 # Objects: player, enemy are to instantiate of the class Person
 player = Person("Valos:", 3260, 132, 60, 34, player_magic, player_items)
 player2 = Person("Nick:", 4160, 188, 60, 34, player_magic, player_items)
 player3 = Person("Robot:", 3089, 174, 60, 34, player_magic, player_items)
 
-enemy1 = Person("Magus", 11200, 701, 45, 25, player_magic, [])
-enemy2 = Person("Imp", 1250, 130, 52, 52, player_magic, [])
-enemy3 = Person("Imp", 1250, 130, 52, 52, player_magic, [])
+enemy1 = Person("Magus", 11200, 701, 45, 25, enemy_spells, [])
+enemy2 = Person("Imp", 1250, 130, 52, 52, enemy_spells, [])
+enemy3 = Person("Imp", 1250, 130, 52, 52, enemy_spells, [])
 
 players = [player, player2, player3]
 enemies = [enemy2, enemy1, enemy3]
@@ -52,7 +54,7 @@ while running:
     print("=======================")
 
     print("\n\n")
-    print(" NAME                  HP                                  MP")
+    print("NAME                 HP                                     MP")
     for player in players:
         player.get_stats()
 
@@ -159,14 +161,12 @@ while running:
 
                 players[target].take_damage(enemy_dmg)
                 print("\n" + bcolors.FAIL + bcolors.BOLD + enemy.name + " attacks " + players[target].name.replace(" ",
-                                                                                                                 "") + "for",
+                                                                                                                   "") + "for",
                       enemy_dmg, "points of damage." + bcolors.ENDC)
 
             elif enemy_choice == 1:
                 spell, magic_dmg = enemy.choose_enemy_spell()
-                if spell is None or magic_dmg is None:
-                    spell, magic_dmg = enemy.choose_enemy_spell()
-                    enemy.reduce_mp(spell.cost)
+                enemy.reduce_mp(spell.cost)
 
                 if spell.type == "white":
                     enemy.heal(magic_dmg)
@@ -174,9 +174,12 @@ while running:
                           "HP" + bcolors.ENDC)
 
                 elif spell.type == "black":
+
                     target = random.randrange(0, 3)
+
                     players[target].take_damage(magic_dmg)
-                    print(bcolors.OKBLUE + "\n " + enemy.name+ "'s " + spell.name + " deals",
+
+                    print(bcolors.OKBLUE + "\n " + enemy.name + "'s " + spell.name + " deals",
                           str(magic_dmg),
                           "points of damage to " + players[target].name + bcolors.ENDC)
 
