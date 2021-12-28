@@ -10,4 +10,4 @@ f.write(r.text)
 
 
 
-# creat a send to creat http reuqest
+# Creat a send to creat http request
