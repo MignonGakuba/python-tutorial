@@ -21,4 +21,4 @@
 #
 #         "tags": ["mongodb", "python", "pymongo"],
 #
-#         "date": datetime.datetime.utcnow()}
+#         "date": datetime.datpost_idetime.utcnow()}
