@@ -1,11 +1,12 @@
 
 # Create json
 
-# Pymongo checkt he link to learn more https://pymongo.readthedocs.io/en/stable/tutorial.html 
+# Pymongo check the link to learn more https://pymongo.readthedocs.io/en/stable/tutorial.html
 
 
-# Install pip
+# Install pipe # install mongo
+
+from pymongo import  MongoClient
 
 
-
-# install mongo
+client = MongoClient()
