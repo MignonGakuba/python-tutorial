@@ -5,8 +5,20 @@
 
 
 # Install pipe # install mongo
-
-from pymongo import  MongoClient
-
-
-client = MongoClient()
+#
+# from pymongo import  MongoClient
+#
+#
+# client = MongoClient()
+#
+# client = MongoClient('localhost', 27017)
+#
+# import datetime
+#
+# post = {"author": "Mike",
+#
+#         "text": "My first blog post!",
+#
+#         "tags": ["mongodb", "python", "pymongo"],
+#
+#         "date": datetime.datetime.utcnow()}
