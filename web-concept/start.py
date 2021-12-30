@@ -22,3 +22,13 @@
 #         "tags": ["mongodb", "python", "pymongo"],
 #
 #         "date": datetime.datpost_idetime.utcnow()}
+
+
+#
+#
+# pprint.pprint(posts.find_one({"_id": post_id}))
+# {'_id': ObjectId('...'),
+#  'author': 'Mike',
+#  'date': datetime.datetime(...),
+#  'tags': ['mongodb', 'python', 'pymongo'],
+#  'text': 'My first blog post!'}
