@@ -5,8 +5,6 @@ urls = (
 )
 
 app = web.application(urls, globals())
-
-
 class index:
 
     def GET(self, name):
