@@ -1,16 +1,16 @@
 import web
 
 urls = (
-    '/', 'index'
+    '/(.*)', 'index'
 )
 
-app = web.apllication(urls, )
-
-
+app = web.application(urls, globals())
 class index:
+
     def GET(self, name):
-        print("Hello", name, "How are you today")
+        print("Hello", name, "How are you today?")
+        return "Hello", name, "How are you today?"
 
 
-if __name__ == "_main_":
+if __name__ == '__main__':
     app.run()
